@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include "Clock.h"
+#include "Equation.h"
 
 enum class commands
 {
@@ -13,6 +14,7 @@ enum class commands
     CONTINUE,
     TESTFSTREAM,
     TESTSSTREAM,
+    EQUATION,
     NONE,
     EXIT
 };
@@ -26,7 +28,7 @@ private:
     void addTime();
     void fileStreamTest();
     void stringStreamTest();
-
+    void equationTest();;
 public:
     void run();
     void doCommand(commands cmd);

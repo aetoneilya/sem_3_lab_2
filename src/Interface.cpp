@@ -16,6 +16,8 @@ std::istream &operator>>(std::istream &is, commands &command)
         command = commands::TESTFSTREAM;
     else if (input == "sstream")
         command = commands::TESTSSTREAM;
+    else if (input == "equation")
+        command = commands::EQUATION;
     else if (input == "exit")
         command = commands::EXIT;
     else
@@ -57,6 +59,16 @@ void Interface::doCommand(commands cmd)
     case commands::TESTSSTREAM:
         stringStreamTest();
         break;
+    case commands::EQUATION:
+    {
+        Axis A{3, 1, 1};
+        Parametrs p{1, 2, 3};
+        ///y = 1 - (11  + 2) + 13 = 1 - 3 + 3 = 1
+
+        std::cout << "Y = " << EvaluateY(p, A) << std::endl;
+        std::cout << "X = " << EvaluateX(A, p, EvaluateY(p, A)) << std::endl;
+    }
+    break;
     case commands::EXIT:
         exit(0);
         break;
@@ -153,4 +165,8 @@ void Interface::stringStreamTest()
     std::string test;
     ss >> test;
     std::cout << "Output from stringstream - " << test << std::endl;
+}
+
+void equationTest()
+{
 }
